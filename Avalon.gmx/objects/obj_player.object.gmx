@@ -32,6 +32,7 @@ d_press=false;
 space=false;
 move_speed=4;
 side_speed=2;
+player_health=100;
 </string>
           </argument>
         </arguments>
@@ -62,25 +63,60 @@ space = (keyboard_check_pressed(vk_space) || keyboard_check_pressed(vk_enter));
 
 if(w_press==true)
 {
-y-=move_speed;
+    if(y&gt;0+sprite_height/2)
+    {
+        y-=move_speed;
+    }
 }
 if(s_press==true)
 {
-y+=move_speed;
+    if(y&lt;room_height-sprite_height/2)
+    {
+        y+=move_speed;
+    }
 }
 if(a_press==true)
 {
-x-=move_speed*side_speed;
+    if(x&gt;0+sprite_width/2)
+    {
+        x-=move_speed*side_speed;
+    }
 }
 if(d_press==true)
 {
-x+=move_speed*side_speed;
+    if(x&lt;room_width-sprite_width/2)
+    {
+        x+=move_speed*side_speed;
+    }
 }
 if(space==true)
 {
 instance_create(x,y,obj_bullet);
 }
 
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_enemy_bullet">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>player_health-=1;
 </string>
           </argument>
         </arguments>

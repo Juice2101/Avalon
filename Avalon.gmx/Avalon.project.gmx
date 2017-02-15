@@ -23,6 +23,7 @@
   </fonts>
   <objects name="objects">
     <object>objects\obj_bullet</object>
+    <object>objects\obj_enemy_bullet</object>
     <object>objects\obj_enemy</object>
     <object>objects\obj_player</object>
     <object>objects\obj_test_controls</object>
