@@ -7,7 +7,7 @@ switch (menu_position)
     case 0: 
     {
     //right now, this does nothing
-        game_end()
+        room_goto(rm_testing);
         break;
     }
 //exit game
