@@ -3,15 +3,36 @@
 //You would also need to update obj_main_menu
 switch (menu_position)
 {
-//new game
-    case 0: 
+//All Chapters
+    case 0:
     {
-    //right now, this does nothing
-        instance_create(x,y,obj_chapter_select);
+    //ends the game
+        room_goto(rm_testing);
         break;
     }
-//exit game
+//Chapter 1
     case 1:
+    {
+    //ends the game
+        game_end();
+        break;
+    }
+//Chapter 2
+    case 2:
+    {
+    //ends the game
+        game_end();
+        break;
+    }
+//Chapter 3
+    case 3:
+    {
+    //ends the game
+        game_end();
+        break;
+    }
+//Chapter 4
+    case 4:
     {
     //ends the game
         game_end();

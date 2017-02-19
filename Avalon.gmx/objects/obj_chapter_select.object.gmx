@@ -26,8 +26,12 @@
           <argument>
             <kind>1</kind>
             <string>//Menu Options
-menu[0]="New Game";
-menu[1]="Exit Game";
+menu[0]="Full Story";
+menu[1]="Chapter 1";
+menu[2]="Chapter 2";
+menu[3]="Chapter 3";
+menu[4]="Chapter 4";
+
 
 //Menu Variables
 menu_length=array_length_1d(menu);//This dynamically matches the amount of menu options
@@ -44,8 +48,9 @@ if(string_width(string(menu[i]))&gt;l)
 }
 //fade in
 a=0;
-background_alpha[0]=0;
-
+fly_off=false;
+x_fly=0;
+fade_out=0;
 //cylce images
 //relevent for menu cursor that has animation
 /*
@@ -81,10 +86,12 @@ push_end=0;
           <argument>
             <kind>1</kind>
             <string>//the up and down keys, or w and s, move the menu marker up and down
-//this subtracts 1 from move when 1 of the buttons is pressed
+if(fly_off==false)
+{
+    //this subtracts 1 from move when 1 of the buttons is pressed
     move -= max(keyboard_check_pressed(vk_up),keyboard_check_pressed(ord("W")),0);
 
-//this adds 1 to move when 1 of the buttons is pressed
+    //this adds 1 to move when 1 of the buttons is pressed
     move += max(keyboard_check_pressed(vk_down),keyboard_check_pressed(ord("S")),0);
 
     if (move != 0)
@@ -98,24 +105,41 @@ push_end=0;
             menu_position = 0;
         move=0;
     }
-//enter or space selects something on the menu
+    //enter or space selects something on the menu
     push = max(keyboard_check_released(vk_enter),keyboard_check_released(vk_space),0);
     if (push == 1) 
     {
-     scr_main_menu();
-        //scr_main_menu checks what the current menu position is
-        //scripts have access to variables of the object that calls the script inheriently
-    instance_destroy();
-    }
+        fly_off=true;
+    }  
   
-//This controls fade in
-//a is short for image_alpha
+    //This controls fade in
+    //a is short for image_alpha
     if(a&lt;1)
     {
-    background_alpha[0]+=0.05;
-    a+=0.05;
+        a+=0.05;
     }
-
+}
+else
+{
+    if(fade_out==false)
+    {
+        x_fly+=6;
+        if(x+x_fly&gt;room_width+sprite_width)
+        {
+            fade_out=true;
+        }
+    }
+    else
+    {
+        a-=0.05;
+        background_alpha-=0.05;
+        if(a==0)
+        {
+            scr_chapter_select();
+            instance_destroy();
+        }
+    }
+}
 
 push_end = max(keyboard_check_released(vk_escape),0)
 if (push_end == 1) 
@@ -163,7 +187,14 @@ for(i=0; i &lt; array_length_1d(menu); i += 1)
 {
     draw_text(x +space, y + (i * space), string(menu[i]));
 }
+if(fly_off==false)
+{
 draw_sprite(sprite_index, 0, x, y+(menu_position * space));
+}
+else
+{
+draw_sprite(sprite_index,0, x+x_fly, y+(menu_position * space));
+}
 
 //when we get a title, here is the code for drawing that.
 //draw_sprite(spr_title,0,512,256);

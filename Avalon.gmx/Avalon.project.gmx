@@ -10,6 +10,7 @@
     <sprite>sprites\spr_player</sprite>
     <sprite>sprites\spr_enemy</sprite>
     <sprite>sprites\spr_player_bullet</sprite>
+    <sprite>sprites\spr_splash_screen</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\bg_main_menu</background>
@@ -17,6 +18,7 @@
   <paths name="paths"/>
   <scripts name="scripts">
     <script>scripts\scr_main_menu.gml</script>
+    <script>scripts\scr_chapter_select.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\font_main_menu</font>
@@ -29,12 +31,14 @@
     <object>objects\obj_test_controls</object>
     <objects name="group_obj_menu">
       <object>objects\obj_main_menu</object>
+      <object>objects\obj_chapter_select</object>
+      <object>objects\obj_team_name</object>
     </objects>
   </objects>
   <rooms name="rooms">
-    <room>rooms\rm_testing</room>
-    <room>rooms\rm_main_menu</room>
     <room>rooms\rm_splash_screen</room>
+    <room>rooms\rm_main_menu</room>
+    <room>rooms\rm_testing</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>
