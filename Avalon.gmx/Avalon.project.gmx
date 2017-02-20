@@ -7,11 +7,10 @@
   <sounds name="sound"/>
   <sprites name="sprites">
     <sprite>sprites\spr_main_menu</sprite>
-    <sprite>sprites\spr_player</sprite>
     <sprite>sprites\spr_enemy</sprite>
     <sprite>sprites\spr_player_bullet</sprite>
     <sprite>sprites\spr_splash_screen</sprite>
-    <sprite>sprites\sprite5_Excalibur</sprite>
+    <sprite>sprites\spr_player</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\bg_main_menu</background>
